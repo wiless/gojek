@@ -20,5 +20,9 @@ ParseMissileActions(fbytes)
 #Playing
 Alternatively, Missile of each player is Launched using the `LaunchMissile` method of the `Board` object. Which keeps track of Hits/Misses internally
 
+Launches the missile as Player:`PlayerID` at Position `Pos`. The method returns `true` on successfull hit on other player's ship
+```
+	Board.LaunchMissile(playerID, Pos)
+```
 #Result
 The final status of the Board is returned by the `Result()` method
