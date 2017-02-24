@@ -58,6 +58,6 @@ if b.TotalShips > b.GridSize/2 {
 ## No Overwriting of Ships
 The Board Loading method ensures that only one of the player's Ships is placed in a given grid location.
 ## Repeat Attack 
-Missiles dropped on a Dead Ship location are not counted as Hit !!
+Missiles dropped on a Dead Ship location are not counted as Hit !! And it will be marked as `Missed`
 
 
