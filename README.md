@@ -47,9 +47,17 @@ The application also prints the logs as the game continues
 
 #NOTE
 
+## No of Ships
 The board can be set to NOT to load if # of ships > GridSize/2 !! Uncomment these lines from `board.go`
 ```
 if b.TotalShips > b.GridSize/2 {
 	return fmt.Errorf("No of Ships %d cannot be > %d", b.TotalShips, b.GridSize/2)
 }
 ```
+
+## No Overwriting of Ships
+The Board Loading method ensures that only one of the player's Ships is placed in a given grid location.
+## Repeat Attack 
+Missiles dropped on a Dead Ship location are not counted as Hit !!
+
+
