@@ -32,7 +32,8 @@ type Board struct {
 	Hits          [NPlayers]int // Stores the number of Hits of each Player
 }
 
-func (b *Board) LoadBoard(inputstr string) error {
+func (b *Board) LoadBoard(bstr []byte) error {
+	inputstr := string(bstr)
 	lines := strings.Split(inputstr, "\n")
 	if len(lines) < 5 {
 		return errors.New("Not enough lines")
@@ -123,7 +124,8 @@ func (b *Board) LaunchMissile(playerindx int, p Pos) (hit bool) {
 var TotalMissiles int
 var Missles [NPlayers][]Pos //for both player
 
-func ParseMissileActions(str string) error {
+func ParseMissileActions(b []byte) error {
+	str := string(b)
 	tmp := strings.SplitAfterN(str, "\n", 5)
 	actiontxt := tmp[4] // the initial 4 rows are for board
 
