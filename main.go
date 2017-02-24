@@ -7,11 +7,15 @@ import (
 	"os"
 )
 
+var TotalMissiles int
+var Missles [][]Pos //for both player
+
 func main() {
 	var b Board
 	ifname := "input.txt"
 	ofname := "output.txt"
 	fbytes, err := ioutil.ReadFile(ifname)
+
 	if err != nil {
 		log.Println("File not find", ifname)
 		return
@@ -26,9 +30,13 @@ func main() {
 		// fmt.Printf("%v", b.Grid[0][0])
 	}
 
-	if err := ParseMissileActions(fbytes); err != nil {
-		log.Print(err)
+	Missles, err = ParseMissileActions(fbytes)
+
+	if err != nil {
+		log.Print("Unable to Load Missiles Cant Continue ", err)
+		return
 	}
+	TotalMissiles = len(Missles[0])
 
 	for m := 0; m < TotalMissiles; m++ {
 		/// Launch Player 0

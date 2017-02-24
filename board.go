@@ -121,38 +121,35 @@ func (b *Board) LaunchMissile(playerindx int, p Pos) (hit bool) {
 	return false
 }
 
-var TotalMissiles int
-var Missles [NPlayers][]Pos //for both player
-
-func ParseMissileActions(b []byte) error {
+func ParseMissileActions(b []byte) (missiles [][]Pos, e error) {
 	str := string(b)
 	tmp := strings.SplitAfterN(str, "\n", 5)
 	actiontxt := tmp[4] // the initial 4 rows are for board
 
 	lines := strings.Split(actiontxt, "\n")
-	TotalMissiles = ParseInt(lines[0])
-
+	totalMissiles := ParseInt(lines[0])
+	missiles = make([][]Pos, 2) //
 	// Load same number of missiles for both player
-	Missles[0] = make([]Pos, TotalMissiles)
-	Missles[1] = make([]Pos, TotalMissiles)
+	missiles[0] = make([]Pos, TotalMissiles)
+	missiles[1] = make([]Pos, TotalMissiles)
 	var err error
 
-	Missles[0], err = ParseXYs(lines[1])
+	missiles[0], err = ParseXYs(lines[1])
 
 	if err != nil {
-		return err
+		return missiles, err
 	}
-	if TotalMissiles != len(Missles[0]) {
-		return fmt.Errorf("#Missiles != Positions")
+	if totalMissiles != len(missiles[0]) {
+		return missiles, fmt.Errorf("#Missiles != Positions")
 	}
 
-	Missles[1], err = ParseXYs(lines[2])
+	missiles[1], err = ParseXYs(lines[2])
 	if err != nil {
-		return err
+		return missiles, err
 	}
-	if TotalMissiles != len(Missles[1]) {
-		return fmt.Errorf("#Missiles != Positions")
+	if totalMissiles != len(missiles[1]) {
+		return nil, fmt.Errorf("#Missiles != Positions")
 	}
 
-	return nil
+	return missiles, nil
 }
