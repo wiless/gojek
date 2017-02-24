@@ -26,3 +26,21 @@ Launches the missile as Player:`PlayerID` at Position `Pos`. The method returns 
 ```
 #Result
 The final status of the Board is returned by the `Result()` method
+
+#Log
+The application also prints the logs as the game continues
+```
+2017/02/25 03:43:58 Game Board  Loaded successfully from  input.txt
+2017/02/25 03:43:58 Player 0 Launching Missile 0 : HIT ✓
+2017/02/25 03:43:58 Player 1 Launching Missile 0 : HIT ✗
+2017/02/25 03:43:58 Player 0 Launching Missile 1 : HIT ✓
+2017/02/25 03:43:58 Player 1 Launching Missile 1 : HIT ✗
+2017/02/25 03:43:58 Player 0 Launching Missile 2 : HIT ✓
+2017/02/25 03:43:58 Player 1 Launching Missile 2 : HIT ✗
+2017/02/25 03:43:58 Player 0 Launching Missile 3 : HIT ✗
+2017/02/25 03:43:58 Player 1 Launching Missile 3 : HIT ✗
+2017/02/25 03:43:58 Player 0 Launching Missile 4 : HIT ✗
+2017/02/25 03:43:58 Player 1 Launching Missile 4 : HIT ✓
+2017/02/25 03:43:58 Game Ended : Player 1 Won
+2017/02/25 03:43:58 File Created  output.txt
+```
