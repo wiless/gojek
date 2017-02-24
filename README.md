@@ -44,3 +44,12 @@ The application also prints the logs as the game continues
 2017/02/25 03:43:58 Game Ended : Player 1 Won
 2017/02/25 03:43:58 File Created  output.txt
 ```
+
+#NOTE
+
+The board can be set to NOT to load if # of ships > GridSize/2 !! Uncomment these lines from `board.go`
+```
+if b.TotalShips > b.GridSize/2 {
+	return fmt.Errorf("No of Ships %d cannot be > %d", b.TotalShips, b.GridSize/2)
+}
+```
